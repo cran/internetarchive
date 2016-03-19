@@ -1,39 +1,35 @@
-## ----eval=FALSE----------------------------------------------------------
-#  # install.packages("devtools")
-#  devtools::install_github("ropensci/internetarchive", build_vignettes = TRUE)
-
 ## ----message=FALSE-------------------------------------------------------
-library("internetarchive")
-library("dplyr")
+library(internetarchive)
+library(dplyr)
 
 ## ------------------------------------------------------------------------
 ia_keyword_search("isaac hecker")
 
-## ----, eval=FALSE--------------------------------------------------------
+## ---- eval=FALSE---------------------------------------------------------
 #  ia_browse("TheLifeOfFatherHecker")
 
 ## ------------------------------------------------------------------------
 ats_query <- c("publisher" = "american tract society", "year" = "1864")
 ia_search(ats_query, num_results = 3)
 
-## ----, eval=FALSE--------------------------------------------------------
+## ---- eval=FALSE---------------------------------------------------------
 #  ia_search(c("publisher" = "american tract society", date = "1840 TO 1850"))
 
-## ----, eval=FALSE--------------------------------------------------------
+## ---- eval=FALSE---------------------------------------------------------
 #  hecker <- ia_get_items("TheLifeOfFatherHecker")
 
-## ----, eval=FALSE--------------------------------------------------------
+## ---- eval=FALSE---------------------------------------------------------
 #  ia_metadata(hecker)
 #  ia_files(hecker)
 
-## ----, eval=FALSE--------------------------------------------------------
+## ---- eval=FALSE---------------------------------------------------------
 #  ia_keyword_search("isaac hecker", num_results = 3) %>%
 #    ia_get_items() %>%
 #    ia_metadata() %>%
 #    filter(field == "title") %>%
 #    select(value)
 
-## ----, eval=FALSE--------------------------------------------------------
+## ---- eval=FALSE---------------------------------------------------------
 #  dir <- tempdir()
 #  ia_search(ats_query, num_results = 2) %>%
 #    ia_get_items() %>%
